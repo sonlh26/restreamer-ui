@@ -4,7 +4,6 @@ import { Trans } from '@lingui/macro';
 import makeStyles from '@mui/styles/makeStyles';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Icon from '@mui/icons-material/Cached';
 import TextField from '@mui/material/TextField';
@@ -14,6 +13,8 @@ import Dialog from '../../../misc/modals/Dialog';
 import Filesize from '../../../misc/Filesize';
 import FormInlineButton from '../../../misc/FormInlineButton';
 import UploadButton from '../../../misc/UploadButton';
+import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const imageTypes = [
 	{ mimetype: 'image/*', extension: 'image', maxSize: 2 * 1024 * 1024 },
@@ -62,6 +63,7 @@ function Source(props) {
 	const classes = useStyles();
 	const settings = initSettings(props.settings);
 	const [$saving, setSaving] = React.useState(false);
+	const [$progressPercent, setProgress] = React.useState(false);
 	const [$error, setError] = React.useState({
 		open: false,
 		title: '',
@@ -138,6 +140,9 @@ function Source(props) {
 		props.onProbe(settings, createInputs(settings));
 	};
 
+	const handProgress = (progress) => {
+		setProgress(progress.toFixed(0));
+	};
 	return (
 		<React.Fragment>
 			<Grid container alignItems="flex-start" spacing={2} className={classes.gridContainer}>
@@ -156,6 +161,7 @@ function Source(props) {
 						onStart={handleUploadStart}
 						onError={handleUploadError(<Trans>Uploading the file failed</Trans>)}
 						onUpload={handleFileUpload}
+						onProgress={handProgress}
 					/>
 				</Grid>
 				<Grid item xs={12}>
@@ -165,7 +171,23 @@ function Source(props) {
 				</Grid>
 			</Grid>
 			<Backdrop open={$saving}>
-				<CircularProgress color="inherit" />
+				{$saving && (
+					<Grid container alignItems="center" justifyContent="center" style={{ marginTop: '1rem' }}>
+						<Grid item xs={12} style={{ marginTop: '1rem', textAlign: 'center' }}>
+							{$progressPercent >= 100 ? (
+								<div>
+									<CircularProgress color="inherit" />
+									<Typography variant="h6">Video processing.....</Typography>
+								</div>
+							) : (
+								<div>
+									<LinearProgress variant="determinate" value={$progressPercent} />
+									<Typography variant="h6">Reading... {$progressPercent}%</Typography>
+								</div>
+							)}
+						</Grid>
+					</Grid>
+				)}
 			</Backdrop>
 			<Dialog
 				open={$error.open}
