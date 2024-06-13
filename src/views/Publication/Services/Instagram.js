@@ -12,11 +12,7 @@ const id = 'instagram';
 const name = 'Instagram';
 const version = '1.1';
 const stream_key_link = 'https://about.instagram.com/blog/tips-and-tricks/instagram-live-producer';
-const description = (
-	<Trans>
-		Live-Streaming to Instagram Live RTMP Service.
-	</Trans>
-);
+const description = <Trans>Live-Streaming to Instagram Live RTMP Service.</Trans>;
 const image_copyright = '';
 const author = {
 	creator: {
@@ -78,7 +74,14 @@ function Service(props) {
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={12} md={9}>
-				<TextField variant="outlined" fullWidth label={<Trans>Stream key</Trans>} placeholder="IG-10101942686003993-0-AbyaAF64MLbaxSBJ" value={settings.key} onChange={handleChange('key')} />
+				<TextField
+					variant="outlined"
+					fullWidth
+					label={<Trans>Stream key</Trans>}
+					placeholder="IG-10101942686003993-0-AbyaAF64MLbaxSBJ"
+					value={settings.key}
+					onChange={handleChange('key')}
+				/>
 			</Grid>
 			<Grid item xs={12} md={3}>
 				<FormInlineButton target="blank" href={stream_key_link} component="a">

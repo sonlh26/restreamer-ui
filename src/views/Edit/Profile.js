@@ -56,7 +56,7 @@ export default function Profile(props) {
 		(async () => {
 			await load();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const load = async () => {

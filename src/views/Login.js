@@ -135,7 +135,7 @@ export default function Login(props) {
 				setIsAuthenticated(isAuthenticated);
 			}
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const handleLogin = async (event) => {

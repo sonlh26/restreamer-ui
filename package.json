@@ -29,7 +29,9 @@
 		"@testing-library/user-event": "^14.5.2",
 		"@types/react": "^18.3.3",
 		"babel-plugin-macros": "^3.1.0",
+		"devlop": "^1.1.0",
 		"eslint": "^9.4.0",
+		"eslint-webpack-plugin": "^4.2.0",
 		"handlebars": "^4.7.8",
 		"jwt-decode": "^4.0.0",
 		"make-plural": "^7.4.0",
@@ -51,7 +53,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts --optimize-for-size build",
+		"build": "react-scripts --optimize-for-size --openssl-legacy-provider build",
 		"start-build": "serve -s build",
 		"test": "react-scripts test",
 		"test-ci": "react-scripts test --watchAll=false --testTimeout 50000",
@@ -61,19 +63,6 @@
 		"i18n-extract:clean": "lingui extract --clean",
 		"i18n-compile": "lingui compile",
 		"format": "prettier --write ./src"
-	},
-	"eslintConfig": {
-		"extends": "react-app",
-		"overrides": [
-			{
-				"files": [
-					"**/*.js"
-				],
-				"rules": {
-					"import/no-anonymous-default-export": "off"
-				}
-			}
-		]
 	},
 	"browserslist": {
 		"production": [

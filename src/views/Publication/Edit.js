@@ -96,7 +96,7 @@ export default function Edit(props) {
 		(async () => {
 			await update(true);
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	React.useEffect(() => {

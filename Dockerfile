@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:21-alpine3.17
+ARG NODE_IMAGE=node:20.13.1
 ARG CADDY_IMAGE=caddy:2.7.5-alpine
 
 FROM $NODE_IMAGE as builder
@@ -15,8 +15,8 @@ WORKDIR /ui
 RUN cd /ui && \
 	yarn set version berry && \
 	yarn config set httpTimeout 600000 && \
- 	yarn install && \
- 	yarn run build
+ 	npm i --force && \
+ 	npm run build
 
 FROM $CADDY_IMAGE
 

@@ -1,4 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
+
 import palette from './palette';
 
 import '@fontsource/dosis/300.css';

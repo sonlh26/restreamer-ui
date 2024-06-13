@@ -25,7 +25,7 @@ export default function Control(props) {
 	// Set the defaults
 	React.useEffect(() => {
 		props.onChange(settings, true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const handleChange = (what) => (event) => {

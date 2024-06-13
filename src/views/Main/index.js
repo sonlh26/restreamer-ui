@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 	playerL1: {
 		//padding: '4px 1px 4px 8px',
 		paddingTop: 10,
-		paddingLeft: 18
+		paddingLeft: 18,
 	},
 	playerL2: {
 		position: 'relative',
@@ -95,7 +95,7 @@ export default function Main(props) {
 			await load();
 			await update();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	React.useEffect(() => {

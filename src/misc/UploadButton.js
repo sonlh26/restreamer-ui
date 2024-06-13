@@ -2,7 +2,6 @@ import React from 'react';
 
 import FormInlineButton from './FormInlineButton';
 
-
 export default function UploadButton(props) {
 	const { acceptTypes, label, onError, onStart, onUpload, onProgress, ...other } = props;
 	const accept = props.acceptTypes.map((t) => t.mimetype);
@@ -13,7 +12,7 @@ export default function UploadButton(props) {
 			if (files.length === 0) {
 				// no files selected
 				props.onError({
-					type: 'nofiles'
+					type: 'nofiles',
 				});
 				return;
 			}
@@ -40,7 +39,7 @@ export default function UploadButton(props) {
 				props.onError({
 					type: 'mimetype',
 					actual: file.type,
-					allowed: accept.slice()
+					allowed: accept.slice(),
 				});
 				return;
 			}
@@ -50,7 +49,7 @@ export default function UploadButton(props) {
 				props.onError({
 					type: 'size',
 					actual: file.size,
-					allowed: type.maxSize
+					allowed: type.maxSize,
 				});
 				return;
 			}
@@ -64,7 +63,7 @@ export default function UploadButton(props) {
 			} catch (error) {
 				props.onError({
 					type: 'read',
-					message: error.message
+					message: error.message,
 				});
 			}
 
@@ -116,19 +115,14 @@ export default function UploadButton(props) {
 				{props.label}
 				<input accept={accept.join(',')} type="file" hidden onChange={handleUpload} />
 			</FormInlineButton>
-
 		</div>
-	)
-		;
+	);
 }
 
 UploadButton.defaultProps = {
 	label: '',
 	acceptTypes: [],
-	onError: function() {
-	},
-	onUpload: function(data, extension) {
-	},
-	onProgress: function(progress) {
-	}
+	onError: function () {},
+	onUpload: function (data, extension) {},
+	onProgress: function (progress) {},
 };

@@ -57,7 +57,7 @@ export default function Changelog(props) {
 		(async () => {
 			await onMount();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const onMount = async () => {

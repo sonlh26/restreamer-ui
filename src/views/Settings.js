@@ -751,7 +751,7 @@ export default function Settings(props) {
 		return () => {
 			clearInterval(logTimer.current);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	useInterval(() => {

@@ -211,7 +211,7 @@ const createInputs = (settings, config, skills) => {
 	} else {
 		input.address = settings.address;
 	}
-
+	input.options.push('-stream_loop', '-1');
 	// registrate protocol by address
 	const protocol = getProtocolClass(input.address);
 

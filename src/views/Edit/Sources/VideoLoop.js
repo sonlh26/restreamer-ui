@@ -18,13 +18,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const imageTypes = [
 	{ mimetype: 'image/*', extension: 'image', maxSize: 2 * 1024 * 1024 },
-	{ mimetype: 'video/*', extension: 'video', maxSize: 30 * 1024 * 1024 * 1024 * 1024 }
+	{ mimetype: 'video/*', extension: 'video', maxSize: 30 * 1024 * 1024 * 1024 * 1024 },
 ];
 
 const useStyles = makeStyles((theme) => ({
 	gridContainer: {
-		marginTop: '0.5em'
-	}
+		marginTop: '0.5em',
+	},
 }));
 
 const initSettings = (initialSettings) => {
@@ -35,7 +35,7 @@ const initSettings = (initialSettings) => {
 	const settings = {
 		address: '',
 		mimetype: '',
-		...initialSettings
+		...initialSettings,
 	};
 
 	return settings;
@@ -45,7 +45,7 @@ const createInputs = (settings) => {
 	const address = '{diskfs}' + settings.address;
 	const input = {
 		address: address,
-		options: []
+		options: [],
 	};
 
 	if (settings.mimetype.startsWith('image/')) {
@@ -67,7 +67,7 @@ function Source(props) {
 	const [$error, setError] = React.useState({
 		open: false,
 		title: '',
-		message: ''
+		message: '',
 	});
 
 	const handleFileUpload = async (data, extension, mimetype) => {
@@ -76,7 +76,7 @@ function Source(props) {
 		props.onChange({
 			...settings,
 			address: path,
-			mimetype: mimetype
+			mimetype: mimetype,
 		});
 
 		setSaving(false);
@@ -125,14 +125,14 @@ function Source(props) {
 			...$error,
 			open: true,
 			title: title,
-			message: message
+			message: message,
 		});
 	};
 
 	const hideUploadError = () => {
 		setError({
 			...$error,
-			open: false
+			open: false,
 		});
 	};
 
@@ -208,15 +208,12 @@ function Source(props) {
 Source.defaultProps = {
 	knownDevices: [],
 	settings: {},
-	onChange: function(settings) {
-	},
-	onProbe: function(settings, inputs) {
-	},
-	onRefresh: function() {
-	},
-	onStore: function(name, data) {
+	onChange: function (settings) {},
+	onProbe: function (settings, inputs) {},
+	onRefresh: function () {},
+	onStore: function (name, data) {
 		return '';
-	}
+	},
 };
 
 function SourceIcon(props) {
@@ -230,7 +227,7 @@ const ffversion = '^4.1.0 || ^5.0.0 || ^6.1.0';
 
 const func = {
 	initSettings,
-	createInputs
+	createInputs,
 };
 
 export { id, name, capabilities, ffversion, SourceIcon as icon, Source as component, func };

@@ -20,7 +20,7 @@ import Router from './Router';
 import Views from './views';
 import { UI as Version } from './version';
 import Changelog from './misc/Changelog';
-
+import Button from '@mui/material/Button';
 import SemverGt from 'semver/functions/gt';
 import SemverValid from 'semver/functions/valid';
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RestreamerUI(props) {
 	const classes = useStyles();
-
+	const addressList = [{ address: 'http://149.248.17.52:8080', name: 'BOD Live Server 1' }];
 	const [$state, setState] = React.useState({
 		initialized: false,
 		valid: false,
@@ -79,8 +79,6 @@ export default function RestreamerUI(props) {
 		})();
 
 		return () => {};
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useInterval(() => {
@@ -430,7 +428,9 @@ export default function RestreamerUI(props) {
 			open: false,
 		});
 	};
-
+	const handleAddressSelect = (address) => {
+		window.location.href = `?address=${address}`;
+	};
 	const handleResources = async () => {
 		return await restreamer.current.Resources();
 	};
@@ -461,7 +461,17 @@ export default function RestreamerUI(props) {
 		view = <Views.Initializing />;
 	} else {
 		if ($state.valid === false) {
-			view = <Views.Invalid address={restreamer.current.Address()} />;
+			view = (
+				<Grid container justifyContent="center" alignItems="center" spacing={2}>
+					{addressList.map((item, index) => (
+						<Grid item key={index}>
+							<Button variant="outlined" onClick={() => handleAddressSelect(item.address)}>
+								{item.name}
+							</Button>
+						</Grid>
+					))}
+				</Grid>
+			);
 		} else if ($state.connected === false) {
 			view = (
 				<Views.Login

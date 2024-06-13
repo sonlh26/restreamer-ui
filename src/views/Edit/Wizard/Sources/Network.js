@@ -47,7 +47,7 @@ function Source(props) {
 
 	React.useEffect(() => {
 		handleChange();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const protocol = S.func.getProtocolClass(settings.address);

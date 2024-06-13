@@ -24,7 +24,7 @@ export default function Component(props) {
 
 	React.useEffect(() => {
 		scrollTo();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, [content]);
 
 	const handleCopy = async () => {

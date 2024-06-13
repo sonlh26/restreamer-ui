@@ -67,7 +67,7 @@ export default function Egress(props) {
 		(async () => {
 			await update();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const update = async () => {

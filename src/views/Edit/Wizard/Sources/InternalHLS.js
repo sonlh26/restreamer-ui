@@ -36,7 +36,7 @@ function Source(props) {
 
 	React.useEffect(() => {
 		handleChange();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const HLS = S.func.getHLS(config, settings.push.name);

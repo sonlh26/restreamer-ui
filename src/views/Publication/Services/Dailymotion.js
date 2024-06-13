@@ -87,7 +87,9 @@ function Service(props) {
 					value={settings.server_url}
 					onChange={handleChange('server_url')}
 					error={settings.server_url.includes('rtmp://') || settings.server_url.includes('rtmps://') ? false : true}
-					helperText={settings.server_url.includes('rtmp://') || settings.server_url.includes('rtmps://') ? false : 'Please enter a valid RTMP/S URL.'}
+					helperText={
+						settings.server_url.includes('rtmp://') || settings.server_url.includes('rtmps://') ? false : 'Please enter a valid RTMP/S URL.'
+					}
 				/>
 			</Grid>
 			<Grid item xs={12} md={9}>

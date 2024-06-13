@@ -59,7 +59,7 @@ export default function Wizard(props) {
 		(async () => {
 			await load();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	React.useEffect(() => {
@@ -275,7 +275,7 @@ export default function Wizard(props) {
 							<Typography>{s.name}</Typography>
 						</div>
 					</Button>
-				</Grid>
+				</Grid>,
 			);
 		}
 
@@ -489,7 +489,7 @@ export default function Wizard(props) {
 			decodersList.push(
 				<MenuItem value={c.coder} key={c.coder}>
 					{c.name}
-				</MenuItem>
+				</MenuItem>,
 			);
 		}
 
@@ -501,7 +501,7 @@ export default function Wizard(props) {
 			encodersList.push(
 				<MenuItem value={c.coder} key={c.coder}>
 					{c.name}
-				</MenuItem>
+				</MenuItem>,
 			);
 		}
 
@@ -515,7 +515,7 @@ export default function Wizard(props) {
 			streamList.push(
 				<MenuItem value={s.stream} key={s.stream}>
 					{s.width}x{s.height}, {s.codec.toUpperCase()}
-				</MenuItem>
+				</MenuItem>,
 			);
 		}
 
@@ -667,7 +667,7 @@ export default function Wizard(props) {
 			streamList.push(
 				<MenuItem value={s.stream} key={s.stream}>
 					{s.codec.toUpperCase()} {s.layout} {s.sampling_hz}Hz
-				</MenuItem>
+				</MenuItem>,
 			);
 		}
 
@@ -682,7 +682,7 @@ export default function Wizard(props) {
 				deviceList.push(
 					<MenuItem key={device.id} value={device.id}>
 						{device.name} ({device.id})
-					</MenuItem>
+					</MenuItem>,
 				);
 			}
 		}

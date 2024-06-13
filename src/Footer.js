@@ -3,7 +3,6 @@ import React from 'react';
 import { isMobile } from 'react-device-detect';
 import { Trans } from '@lingui/macro';
 import makeStyles from '@mui/styles/makeStyles';
-//import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -90,7 +89,7 @@ function Resources(props) {
 		(async () => {
 			await update();
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	const update = async () => {

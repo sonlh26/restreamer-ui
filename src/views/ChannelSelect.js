@@ -7,7 +7,7 @@ export default function ChannelSelector(props) {
 
 	React.useEffect(() => {
 		onMount();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, []);
 
 	React.useEffect(() => {

@@ -73,7 +73,7 @@ export default function Player(props) {
 								},
 								() => {
 									// autoplay did not work
-								}
+								},
 							);
 						}
 					}
